@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "backend": "nodemon -I --exec node --experimental-specifier-resolution=node  --loader ts-node/esm ./server/index.ts",
+    "backend": "nodemon -I --exec node --trace-warnings --experimental-specifier-resolution=node  --loader ts-node/esm ./server/index.ts",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
