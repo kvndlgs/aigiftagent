@@ -1,19 +1,50 @@
 import React from 'react';
+import axios from 'axios';
 import { RecipientForm } from './components/RecipientForm';
 import { GiftSuggestions } from './components/GiftSuggestions';
+import { MockGiftSuggestions } from './components/GiftSuggestions';
 import { Wishlist } from './components/Wishlist';
 import { Header } from './components/Header';
-import { useGiftStore } from './store/giftStore';
+import { useGiftStore, useMockGiftStore } from './store/giftStore';
 import { useAuthStore } from './store/authStore';
-import { generateGiftIdeas } from './services/claude';
 import { Toaster } from 'react-hot-toast';
+import { generateGiftIdeas, generateMockGiftIdeas } from './services/api/generate-gift';
+
 
 function App() {
   const { recipient, setLoading, setSuggestions } = useGiftStore();
+  const { mockRecipient, setMockLoading, setMockSuggestions } = useMockGiftStore();
   const user = useAuthStore((state) => state.user);
   const [showWishlist, setShowWishlist] = React.useState(false);
 
+
   React.useEffect(() => {
+
+    const fetchMockGiftIdeas = async () => {
+      if (!mockRecipient) return;
+
+      try {
+        setMockLoading(true);
+        const ideas = await generateMockGiftIdeas(
+          mockRecipient.relationship,
+          mockRecipient.age,
+          mockRecipient.interests,
+          mockRecipient.budget,
+          mockRecipient.occasion
+        );
+        setMockSuggestions([{ideas, occasion: mockRecipient.occasion}]);
+      } catch (error) {
+        console.error('nigga what?', error);
+      } finally {
+        setMockLoading(false);
+      }
+
+      if(mockRecipient) {
+        fetchMockGiftIdeas();
+      }
+      [mockRecipient, setMockLoading, setMockSuggestions];
+    };
+
     const fetchGiftIdeas = async () => {
       if (!recipient) return;
 
@@ -62,7 +93,7 @@ function App() {
           ) : (
             <>
               <RecipientForm />
-              <GiftSuggestions />
+              <MockGiftSuggestions />
             </>
           )}
         </div>

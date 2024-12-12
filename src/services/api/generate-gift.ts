@@ -1,5 +1,27 @@
 import axios from 'axios'
-import { GiftIdea } '../../types/index'
+import { GiftIdea, MockGiftIdea } from '../../types/'
+
+export const generateMockGiftIdeas = async (
+  relationship: string ,
+  age: number,
+  interests: string[],
+  budget: number,
+  occasion: string,
+): Promise<MockGiftIdea[]> => {
+  try {
+    const response = await axios.post(`http://localhost:3001/giftSuggestion`, {
+      relationship,
+      age,
+      interests,
+      budget,
+      occasion,
+    });
+    return response.data;
+  } catch(error) {
+    console.error('niga');
+    throw error;
+  }
+};
 
 
 export const generateGiftIdeas = async (
@@ -8,8 +30,6 @@ export const generateGiftIdeas = async (
   interests: string[],
   budget: number,
   occasion: string,
-  purpose: string,
-  context: string,
 ): Promise<GiftIdea[]> => {
   try {
     const response = await axios.post('http://localhost:3001/api/generate-gifts', {
@@ -18,8 +38,6 @@ export const generateGiftIdeas = async (
       interests,
       budget,
       occasion,
-      purpose,
-      context,
     });
     return response.data;
   } catch (error) {

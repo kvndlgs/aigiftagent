@@ -1,0 +1,68 @@
+{
+    "giftSuggestions": [
+      {
+        "recipient": {
+          "relationship": "friend",
+          "age": 30,
+          "interests": ["technology", "hiking"],
+          "budget": 200,
+          "occasion": "Birthday",
+          "purpose": "Personal gift",
+          "context": "Long-time friends"
+        },
+        "suggestions": {
+          "occasion": "Birthday",
+          "ideas": [
+            {
+              "title": "Wireless Noise-Canceling Headphones",
+              "description": "High-quality headphones perfect for tech and music lovers",
+              "estimatedPrice": "$199.99",
+              "reasonForRecommendation": "Matches interests in technology",
+              "amazonLink": "https://amazon.com/headphones-example",
+              "etsyLink": null
+            },
+            {
+              "title": "Hiking GPS Smartwatch",
+              "description": "Advanced GPS watch for outdoor enthusiasts",
+              "estimatedPrice": "$249.99",
+              "reasonForRecommendation": "Aligns with hiking interests",
+              "amazonLink": "https://amazon.com/hiking-watch",
+              "etsyLink": null
+            }
+          ]
+        }
+      },
+      {
+        "recipient": {
+          "relationship": "sister",
+          "age": 25,
+          "interests": ["art", "photography"],
+          "budget": 150,
+          "occasion": "Christmas",
+          "purpose": "Thoughtful gift",
+          "context": "Close sibling relationship"
+        },
+        "suggestions": {
+          "occasion": "Christmas",
+          "ideas": [
+            {
+              "title": "Professional Photography Lens",
+              "description": "High-quality lens for passionate photographers",
+              "estimatedPrice": "$129.99",
+              "reasonForRecommendation": "Perfect for photography enthusiast",
+              "amazonLink": "https://amazon.com/camera-lens",
+              "etsyLink": null
+            },
+            {
+              "title": "Artistic Painting Set",
+              "description": "Comprehensive art supplies for creative expression",
+              "estimatedPrice": "$89.99",
+              "reasonForRecommendation": "Supports artistic interests",
+              "amazonLink": null,
+              "etsyLink": "https://etsy.com/art-set"
+            }
+          ]
+        }
+      }
+    ]
+  }
